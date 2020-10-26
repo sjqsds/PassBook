@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="373.0" prefWidth="660.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomeController">
+   <children>
+      <TableView fx:id="table" layoutX="2.0" layoutY="64.0" prefHeight="307.0" prefWidth="653.0">
+        <columns>
+          <TableColumn fx:id="name" prefWidth="145.20001220703125" text="Name" />
+          <TableColumn fx:id="account" prefWidth="161.3999786376953" text="Account" />
+          <TableColumn fx:id="passwd" prefWidth="164.20001220703125" text="Password" />
+          <TableColumn fx:id="Cz" prefWidth="175.79998779296875" text="操作">
+            <columns>
+                <TableColumn fx:id="Bj" prefWidth="90.0" text="编辑" />
+                <TableColumn fx:id="Sc" prefWidth="90.39996337890625" text="删除" />
+            </columns>
+          </TableColumn>
+        </columns>
+      </TableView>
+      <Button fx:id="add" layoutX="567.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#addRecord" text="Add">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Button>
+      <Label layoutX="202.0" layoutY="16.0" text="My PassWdBook">
+         <font>
+            <Font name="System Bold" size="27.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
