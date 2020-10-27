@@ -9,7 +9,9 @@ import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import main.AddRecord;
 import main.Encrypt;
+import main.Home;
 import main.Main;
 import model.Record;
 
@@ -43,8 +45,9 @@ public class HomeController implements Initializable {
         showList();
     }
 
-    public void addRecord() throws IOException {
-        new ChangeScene("addARecord.fxml");
+    public void addRecord() throws Exception {
+        AddRecord addRecord = new AddRecord();
+        addRecord.showWindow();
     }
 
 
@@ -55,7 +58,7 @@ public class HomeController implements Initializable {
         passwd.setCellValueFactory(new PropertyValueFactory("passwd"));
 
 
-        table.setItems(Main.list);
+        table.setItems(Home.list);
 
         //添加按钮进列表
         Bj.setCellFactory((col)->{
@@ -71,13 +74,13 @@ public class HomeController implements Initializable {
                             button1.setOnMouseClicked((col) -> {
 
                                 //获取list列表中的位置，进而获取列表对应的信息数据
-                                Record record = Main.list.get(getIndex());
-                                Main.list.remove(getIndex());
+                                Record record = Home.list.get(getIndex());
+                                Home.list.remove(getIndex());
                                 //按钮事件自己添加
-                                Main.record = record;
+                                Home.record = record;
                                 try {
-                                    new ChangeScene("addARecord.fxml");
-                                } catch (IOException e) {
+                                    addRecord();
+                                } catch (Exception e) {
                                     e.printStackTrace();
                                 }
                                 showList();
@@ -109,7 +112,7 @@ public class HomeController implements Initializable {
                             //按钮点击事件
                             button2.setOnMouseClicked((col) -> {
                                 //获取list列表中的位置，进而获取列表对应的信息数据
-                                Main.list.remove(getIndex());
+                                Home.list.remove(getIndex());
                                 showList();
                             });
 

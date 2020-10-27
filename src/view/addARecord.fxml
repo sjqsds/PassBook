@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AddRecord">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AddRecordController">
    <children>
       <Button id="add" fx:id="addRecord"  layoutX="244.0" layoutY="324.0" mnemonicParsing="false" onMouseClicked="#addRecord" prefHeight="46.0" prefWidth="112.0" text="Add">
          <font>
