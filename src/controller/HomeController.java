@@ -1,7 +1,5 @@
 package controller;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -9,14 +7,10 @@ import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import main.AddRecord;
-import main.Encrypt;
-import main.Home;
-import main.Main;
+import main.*;
 import model.Record;
 
 
-import java.io.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -44,10 +38,16 @@ public class HomeController implements Initializable {
 
         showList();
     }
-
-    public void addRecord() throws Exception {
+    //调用添加记录窗口
+    public void addRecord() {
         AddRecord addRecord = new AddRecord();
         addRecord.showWindow();
+    }
+
+    //调用修改密码窗口
+    public void changeUP(){
+        ChangeUp np = new ChangeUp();
+        np.showWindow();
     }
 
 

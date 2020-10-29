@@ -3,14 +3,17 @@ package main;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import model.Record;
 
 import java.io.*;
+import java.util.logging.Handler;
 
 public class Home {
 
@@ -22,13 +25,23 @@ public class Home {
         readToList();
         Parent root = FXMLLoader.load(getClass().getResource("/view/home.fxml"));
         Main.stage.setScene(new Scene(root));
+        Main.stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent event) {
+                try {
+                    writeFile();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
         Main.stage.show();
     }
 
     //将list中的数据写入到文件中
     public static void writeFile() throws IOException {
 
-        FileOutputStream out = new FileOutputStream("passbook.txt");
+        FileOutputStream out = new FileOutputStream("passbook");
         OutputStreamWriter writer = new OutputStreamWriter(out,"UTF-8");
         for(Record record : list){
             try {
@@ -47,7 +60,15 @@ public class Home {
         list = FXCollections.observableArrayList();
         //每次显示清空一次列表
         list.clear();
-        File file = new File("passbook.txt");
+        File file = new File("passbook");
+        if(!file.exists()) {
+            try {
+                file.createNewFile();
+                System.out.println("passbook文件创建成功！");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
 
         BufferedReader buffer = null;
         try {
